@@ -6,7 +6,7 @@ import { map } from 'rxjs';
 @Component({
   standalone: true,
   imports: [AsyncPipe],
-  template: `ID {{ id$ | async }}`,
+  templateUrl: './edit.component.html',
 })
 export default class EditTodoPageComponent {
   private readonly route = inject(ActivatedRoute);

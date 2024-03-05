@@ -1,12 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditLinkComponent } from '../edit-link/edit-link.component';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
-type Todo = {
-  id: number;
-  title: string;
-  completed: boolean;
-};
+import { Todo } from 'src/app/lib/definitions';
 
 @Component({
   selector: 'app-todo-list',
@@ -16,11 +12,7 @@ type Todo = {
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
-  todos: Todo[] = [
-    { id: 1, title: 'Learn Angular', completed: false },
-    { id: 2, title: 'Build a Todo App', completed: false },
-    { id: 3, title: 'Explore more features', completed: false },
-  ];
+  @Input() list: Todo[] = [];
 
   trackById(index: number, todo: Todo): number {
     return todo.id;
