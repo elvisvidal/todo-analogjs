@@ -1,0 +1,11 @@
+<div class="mt-4">
+  <div
+    *ngFor="let todo of todos; trackBy: trackById"
+    class="flex items-center gap-2 border-b border-gray-200 p-2"
+  >
+    <p class="flex-1">{{ todo.title }}</p>
+
+    <app-edit-link todoId="{{ todo.id }}" />
+    <app-delete-button todoId="{{ todo.id }}" />
+  </div>
+</div>

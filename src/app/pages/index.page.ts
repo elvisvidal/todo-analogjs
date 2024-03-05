@@ -1,49 +1,14 @@
 import { Component } from '@angular/core';
-
+import { TodoListComponent } from '../components/todo-list/todo-list.component';
+import { AddTodoComponent } from '../components/add-todo/add-todo.component';
 @Component({
   selector: 'app-home',
   standalone: true,
+  imports: [AddTodoComponent, TodoListComponent],
   template: `
-    <div>
-      <a href="https://analogjs.org/" target="_blank">
-        <img alt="Analog Logo" class="logo analog" src="/analog.svg" />
-      </a>
-    </div>
-
-    <h2>Analog</h2>
-
-    <h3>The fullstack meta-framework for Angular!</h3>
-
-    <div class="card">
-      <button type="button" (click)="increment()">Count {{ count }}</button>
-    </div>
-
-    <p class="read-the-docs">
-      For guides on how to customize this project, visit the
-      <a href="https://analogjs.org" target="_blank">Analog documentation</a>
-    </p>
+    <h1 class="my-4 text-center text-2xl font-bold">Todo List</h1>
+    <app-add-todo />
+    <app-todo-list />
   `,
-  styles: [
-    `
-      .logo {
-        will-change: filter;
-      }
-      .logo:hover {
-        filter: drop-shadow(0 0 2em #646cffaa);
-      }
-      .logo.angular:hover {
-        filter: drop-shadow(0 0 2em #42b883aa);
-      }
-      .read-the-docs {
-        color: #888;
-      }
-    `,
-  ],
 })
-export default class HomeComponent {
-  count = 0;
-
-  increment() {
-    this.count++;
-  }
-}
+export default class HomeComponent {}

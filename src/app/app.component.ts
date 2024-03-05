@@ -5,16 +5,8 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: ` <router-outlet></router-outlet> `,
-  styles: [
-    `
-      :host {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 2rem;
-        text-align: center;
-      }
-    `,
-  ],
+  template: `<div class="mx-auto max-w-4xl px-4">
+    <router-outlet></router-outlet>
+  </div>`,
 })
 export class AppComponent {}
