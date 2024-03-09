@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { TodoService } from '../../services/todo.service';
+import { EventBusService } from '../../services/event-bus.service';
 
 @Component({
   selector: 'app-delete-button',
@@ -8,5 +10,22 @@ import { Component, Input } from '@angular/core';
   styleUrl: './delete-button.component.css',
 })
 export class DeleteButtonComponent {
-  @Input() todoId: string | number = 0;
+  @Input() todoId: string = '';
+
+  constructor(
+    private todoService: TodoService,
+    private eventBusService: EventBusService,
+  ) {}
+
+  handleClick() {
+    this.todoService.deleteTodo(this.todoId).subscribe({
+      next: (response) => {
+        this.eventBusService.emitEvent({ todoDeleted: true });
+      },
+      error: (error) => {
+        console.error('error: ', error);
+        alert('An error occurred while deleting the todo. Please try again.');
+      },
+    });
+  }
 }

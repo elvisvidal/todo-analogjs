@@ -1,14 +1,19 @@
-<form class="flex gap-2" onSubmit="{handleSubmit}">
+<form class="flex gap-2" [formGroup]="addForm" (ngSubmit)="handleSubmit()">
   <input
     type="text"
-    class="flex-1 rounded border border-gray-300 p-2 text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+    class="flex-1 rounded border border-gray-300 p-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
     placeholder="Add new todo"
-    value="{title}"
     name="title"
+    formControlName="title"
   />
   <button
+    [disabled]="!addForm.valid"
     type="submit"
-    class="rounded bg-blue-500 px-4 py-2 text-white shadow hover:bg-blue-700"
+    [ngClass]="{
+      'rounded px-4 py-2 text-white shadow': true,
+      'bg-blue-500 hover:bg-blue-700': addForm.valid,
+      'cursor-not-allowed bg-gray-500': !addForm.valid
+    }"
   >
     Add
   </button>
