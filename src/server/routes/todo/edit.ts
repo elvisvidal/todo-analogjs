@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     const body = await readBody(event);
     const updatedTodo = await prisma.todo.update({
       where: { id: parseInt(body.id) },
-      data: { title: body.title },
+      data: { title: body.title, completed: body.completed },
     });
     return updatedTodo;
   } catch (error) {

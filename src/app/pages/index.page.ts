@@ -34,6 +34,14 @@ export default class HomeComponent {
     // on delete
     this.subscription = this.eventBusService.eventStream$.subscribe((data) => {
       if (data.todoDeleted) this.reloadList();
+      if (data.todoCompleted) {
+        const todo = this.todos.find(
+          (t) => t.id.toString() === data.todoCompleted,
+        );
+        if (todo) {
+          todo.completed = !todo.completed;
+        }
+      }
     });
   }
 

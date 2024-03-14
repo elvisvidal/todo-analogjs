@@ -48,17 +48,19 @@ export default class EditTodoPageComponent {
   handleSubmit() {
     if (!this.todo) return;
     const title: string = this.editForm.value.title ?? '';
-    this.todoService.editTodo(this.todo.id.toString(), title).subscribe({
-      next: (response) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['/']);
-        });
-      },
-      error: (error) => {
-        console.error('error: ', error);
-        alert('An error occurred while editing the todo. Please try again.');
-      },
-    });
+    this.todoService
+      .editTodo(this.todo.id.toString(), title, this.todo.completed)
+      .subscribe({
+        next: (response) => {
+          this.ngZone.run(() => {
+            this.router.navigate(['/']);
+          });
+        },
+        error: (error) => {
+          console.error('error: ', error);
+          alert('An error occurred while editing the todo. Please try again.');
+        },
+      });
   }
 
   ngOnInit() {

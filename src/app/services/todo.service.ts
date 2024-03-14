@@ -20,8 +20,8 @@ export class TodoService {
   addTodo(title: string): Observable<Object> {
     return this.http.post(`${this.apiURL}/create`, { title });
   }
-  editTodo(id: string, title: string): Observable<Object> {
-    return this.http.put(`${this.apiURL}/edit`, { id, title });
+  editTodo(id: string, title: string, completed: boolean): Observable<Object> {
+    return this.http.put(`${this.apiURL}/edit`, { id, title, completed });
   }
   deleteTodo(id: string): Observable<Object> {
     return this.http.post(`${this.apiURL}/delete`, { id });

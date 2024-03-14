@@ -3,8 +3,16 @@
     *ngFor="let todo of list; trackBy: trackById"
     class="flex items-center gap-2 border-b border-gray-200 p-2"
   >
-    <p class="flex-1">{{ todo.title }}</p>
+    <p
+      [ngClass]="{
+        'flex-1': true,
+        'line-through': todo.completed
+      }"
+    >
+      {{ todo.title }}
+    </p>
 
+    <app-toggle-button [todo]="todo" />
     <app-edit-link todoId="{{ todo.id }}" />
     <app-delete-button todoId="{{ todo.id }}" />
   </div>

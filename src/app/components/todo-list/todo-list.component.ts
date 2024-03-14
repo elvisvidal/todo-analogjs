@@ -3,11 +3,17 @@ import { CommonModule } from '@angular/common';
 import { EditLinkComponent } from '../edit-link/edit-link.component';
 import { DeleteButtonComponent } from '../delete-button/delete-button.component';
 import { Todo } from 'src/app/lib/definitions';
+import { ToggleButtonComponent } from '../toggle-button/toggle-button.component';
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [CommonModule, EditLinkComponent, DeleteButtonComponent],
+  imports: [
+    CommonModule,
+    ToggleButtonComponent,
+    EditLinkComponent,
+    DeleteButtonComponent,
+  ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
 })
