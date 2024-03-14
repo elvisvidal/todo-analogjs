@@ -2,7 +2,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, NgZone, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
-import { TodoService } from '../../services/todo.service';
+import { TodoService } from '@services/todo.service';
 import { Todo } from 'src/app/lib/definitions';
 import {
   FormControl,
@@ -10,7 +10,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { EventBusService } from '../../services/event-bus.service';
+import { EventBusService } from '@services/event-bus.service';
 
 @Component({
   standalone: true,

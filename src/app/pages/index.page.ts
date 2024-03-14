@@ -1,13 +1,13 @@
 import { Component, NgZone, Signal } from '@angular/core';
-import { TodoListComponent } from '../components/todo-list/todo-list.component';
-import { AddTodoComponent } from '../components/add-todo/add-todo.component';
+import { TodoListComponent } from '@components/todo-list/todo-list.component';
+import { AddTodoComponent } from '@components/add-todo/add-todo.component';
 import { Todo } from 'src/app/lib/definitions';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { injectLoad } from '@analogjs/router';
-import { EventBusService } from '../services/event-bus.service';
+import { EventBusService } from '@services/event-bus.service';
 import { Subscription } from 'rxjs';
 import { load } from './index.server';
-import { TodoService } from '../services/todo.service';
+import { TodoService } from '@services/todo.service';
 
 @Component({
   selector: 'app-home',

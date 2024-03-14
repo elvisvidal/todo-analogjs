@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Todo } from '../../lib/definitions';
-import { TodoService } from '../../services/todo.service';
-import { EventBusService } from '../../services/event-bus.service';
+import { TodoService } from '@services/todo.service';
+import { EventBusService } from '@services/event-bus.service';
 
 @Component({
   selector: 'app-toggle-button',

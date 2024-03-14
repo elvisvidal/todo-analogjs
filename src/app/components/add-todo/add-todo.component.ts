@@ -6,8 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { TodoService } from '../../services/todo.service';
-import { EventBusService } from '../../services/event-bus.service';
+import { TodoService } from '@services/todo.service';
+import { EventBusService } from '@services/event-bus.service';
 
 @Component({
   selector: 'app-add-todo',

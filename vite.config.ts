@@ -11,6 +11,10 @@ export default defineConfig(({ mode }) => ({
   },
   resolve: {
     mainFields: ['module'],
+    alias: {
+      '@components': '/src/app/components',
+      '@services': '/src/app/services',
+    },
   },
   plugins: [analog()],
   test: {

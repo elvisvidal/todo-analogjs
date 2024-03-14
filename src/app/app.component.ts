@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { EventBusService } from './services/event-bus.service';
-import { AlertMessageComponent } from './components/alert-message/alert-message.component';
+import { EventBusService } from '@services/event-bus.service';
+import { AlertMessageComponent } from '@components/alert-message/alert-message.component';
 
 @Component({
   selector: 'app-root',

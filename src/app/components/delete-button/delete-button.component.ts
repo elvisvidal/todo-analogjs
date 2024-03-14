@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { TodoService } from '../../services/todo.service';
-import { EventBusService } from '../../services/event-bus.service';
+import { TodoService } from '@services/todo.service';
+import { EventBusService } from '@services/event-bus.service';
 
 @Component({
   selector: 'app-delete-button',
