@@ -1,7 +1,10 @@
-<div class="mt-4">
+<div class="todo-list mt-4">
   <div
     *ngFor="let todo of list; trackBy: trackById"
-    class="flex items-center gap-2 border-b border-gray-200 p-2"
+    [ngClass]="{
+      'todo-item flex items-center gap-2 border-b border-gray-200 p-2': true,
+      completed: todo.completed
+    }"
   >
     <p
       [ngClass]="{
