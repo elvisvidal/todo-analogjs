@@ -13,6 +13,6 @@ export default defineEventHandler(async (event) => {
     });
     return newTodo;
   } catch (error) {
-    return error;
+    return new Response('Failed to create todo.', { status: 500 });
   }
 });

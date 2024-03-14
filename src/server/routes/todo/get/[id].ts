@@ -16,6 +16,7 @@ export default defineEventHandler(async (event) => {
 
     return todo;
   } catch (error) {
-    return error;
+    console.error('Failed to fetch todo:', error);
+    return new Response('Failed to fetch todo.', { status: 500 });
   }
 });

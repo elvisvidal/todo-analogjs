@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, Signal } from '@angular/core';
 import { TodoListComponent } from '../components/todo-list/todo-list.component';
 import { AddTodoComponent } from '../components/add-todo/add-todo.component';
 import { Todo } from 'src/app/lib/definitions';
@@ -22,8 +22,12 @@ import { TodoService } from '../services/todo.service';
 export default class HomeComponent {
   private subscription: Subscription;
   todos: Todo[] = [];
-  data = toSignal(injectLoad<typeof load>(), { requireSync: true });
+  data: Signal<{
+    data: unknown;
+    loaded: boolean;
+  }> = () => ({ loaded: false, data: () => {} });
 
+  //
   constructor(
     private todoService: TodoService,
     private eventBusService: EventBusService,
@@ -31,9 +35,11 @@ export default class HomeComponent {
   ) {
     this.populateList();
 
-    // on delete
+    // EVENT BUS
     this.subscription = this.eventBusService.eventStream$.subscribe((data) => {
+      // delete
       if (data.todoDeleted) this.reloadList();
+      // complete
       if (data.todoCompleted) {
         const todo = this.todos.find(
           (t) => t.id.toString() === data.todoCompleted,
@@ -46,8 +52,25 @@ export default class HomeComponent {
   }
 
   populateList() {
-    if (this.data().loaded) {
-      this.todos = <Todo[]>this.data().data;
+    try {
+      this.data = toSignal(injectLoad<typeof load>(), { requireSync: true });
+      if (!this.data().loaded) {
+        this.eventBusService.emitEvent({
+          alert: {
+            visible: true,
+            message:
+              'An error occurred while listing the todos. Please try again.',
+          },
+        });
+      } else this.todos = <Todo[]>this.data().data;
+    } catch (error) {
+      this.eventBusService.emitEvent({
+        alert: {
+          visible: true,
+          message:
+            'An error occurred while listing the todos. Please try again.',
+        },
+      });
     }
   }
 
@@ -60,7 +83,13 @@ export default class HomeComponent {
       },
       error: (error) => {
         console.error('error: ', error);
-        alert('An error occurred while listing the todo. Please try again.');
+        this.eventBusService.emitEvent({
+          alert: {
+            visible: true,
+            message:
+              'An error occurred while listing the todos. Please try again.',
+          },
+        });
       },
     });
   }

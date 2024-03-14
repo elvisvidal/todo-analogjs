@@ -10,6 +10,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { EventBusService } from '../../services/event-bus.service';
 
 @Component({
   standalone: true,
@@ -27,6 +28,7 @@ export default class EditTodoPageComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private todoService: TodoService,
+    private eventBusService: EventBusService,
     private router: Router,
     private ngZone: NgZone,
   ) {}
@@ -35,11 +37,23 @@ export default class EditTodoPageComponent {
     this.activatedRoute.params.subscribe((params) => {
       const id = params['id'];
       if (id) {
-        this.todoService.getTodo(id).subscribe((todo) => {
-          this.todo = todo;
-          this.editForm.patchValue({
-            title: todo.title,
-          });
+        this.todoService.getTodo(id).subscribe({
+          next: (response) => {
+            this.todo = response;
+            this.editForm.patchValue({
+              title: response.title,
+            });
+          },
+          error: (error) => {
+            console.error('error: ', error);
+            this.eventBusService.emitEvent({
+              alert: {
+                visible: true,
+                message:
+                  'An error occurred while loading the todo. Please try again.',
+              },
+            });
+          },
         });
       }
     });
@@ -58,7 +72,13 @@ export default class EditTodoPageComponent {
         },
         error: (error) => {
           console.error('error: ', error);
-          alert('An error occurred while editing the todo. Please try again.');
+          this.eventBusService.emitEvent({
+            alert: {
+              visible: true,
+              message:
+                'An error occurred while editing the todo. Please try again.',
+            },
+          });
         },
       });
   }

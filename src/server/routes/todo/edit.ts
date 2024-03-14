@@ -12,6 +12,6 @@ export default defineEventHandler(async (event) => {
     });
     return updatedTodo;
   } catch (error) {
-    return error;
+    return new Response('Failed to edit todo.', { status: 500 });
   }
 });

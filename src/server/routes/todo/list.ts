@@ -17,6 +17,6 @@ export default defineEventHandler(async (event) => {
     });
     return todos;
   } catch (error) {
-    return error;
+    return new Response('Failed to list todo.', { status: 500 });
   }
 });

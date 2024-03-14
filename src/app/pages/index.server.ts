@@ -7,9 +7,16 @@ export const load = async ({
   fetch, // internal fetch for direct API calls,
   event, // full request event
 }: PageServerLoad) => {
-  const data = await fetch('http://localhost:5173/api/todo/list');
-  return {
-    data,
-    loaded: true,
-  };
+  try {
+    const data = await fetch('http://localhost:5173/api/todo/list');
+    return {
+      data,
+      loaded: true,
+    };
+  } catch (error) {
+    return {
+      data: new Error('Failed to load todo.'),
+      loaded: false,
+    };
+  }
 };

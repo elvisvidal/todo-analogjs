@@ -32,9 +32,13 @@ export class ToggleButtonComponent {
         },
         error: (error) => {
           console.error('error: ', error);
-          alert(
-            'An error occurred while completing the todo. Please try again.',
-          );
+          this.eventBusService.emitEvent({
+            alert: {
+              visible: true,
+              message:
+                'An error occurred while completing the todo. Please try again.',
+            },
+          });
         },
       });
   }

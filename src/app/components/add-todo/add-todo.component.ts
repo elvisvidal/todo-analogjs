@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { TodoService } from '../../services/todo.service';
+import { EventBusService } from '../../services/event-bus.service';
 
 @Component({
   selector: 'app-add-todo',
@@ -21,7 +22,10 @@ export class AddTodoComponent {
     title: new FormControl('', Validators.required),
   });
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private eventBusService: EventBusService,
+  ) {}
 
   async handleSubmit() {
     const title: string = this.addForm.value.title ?? '';
@@ -34,7 +38,13 @@ export class AddTodoComponent {
       },
       error: (error) => {
         console.error('error: ', error);
-        alert('An error occurred while adding the todo. Please try again.');
+        this.eventBusService.emitEvent({
+          alert: {
+            visible: true,
+            message:
+              'An error occurred while adding the todo. Please try again.',
+          },
+        });
       },
     });
   }

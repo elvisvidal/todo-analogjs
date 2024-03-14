@@ -11,6 +11,6 @@ export default defineEventHandler(async (event) => {
     });
     return true;
   } catch (error) {
-    return error;
+    return new Response('Failed to delete todo.', { status: 500 });
   }
 });
