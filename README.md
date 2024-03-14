@@ -1,3 +1,21 @@
+# TODO NuxtJS
+
+With the evolution of internet and it's various tools, very often, I see myself learning much easier with a hands on approach, increasing the difficulty by chunks of functionality and complexity.
+
+Dispite of the simplicity of a todo-app, it is a great first project to implement:
+
+- Simple well known interface: common UX.
+- Basic UI components powered with CSS framework: TailwindCSS.
+- Simple navigation: list page and edit page.
+- CRUD operations: create, read, update, delete.
+- API response handling: success and error.
+- End-to-end and Component tests.
+
+## Other implementatinos
+
+- [React + Next](https://github.com/elvisvidal/todo-nextjs)
+- [Vue + Nuxt](https://github.com/elvisvidal/todo-nuxtjs)
+
 # Analog App
 
 This project was generated with [Analog](https://analogjs.org), the fullstack meta-framework for Angular.
