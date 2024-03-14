@@ -5,7 +5,16 @@ const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
   try {
-    const todos = await prisma.todo.findMany();
+    const todos = await prisma.todo.findMany({
+      orderBy: [
+        {
+          completed: 'asc',
+        },
+        {
+          createdAt: 'desc',
+        },
+      ],
+    });
     return todos;
   } catch (error) {
     return error;
