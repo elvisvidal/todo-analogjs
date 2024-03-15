@@ -5,7 +5,7 @@ With the evolution of the internet and its various tools, I often find myself le
 Despite the simplicity of a todo app, it is a great first project to implement:
 
 - **Simple well-known interface**: Common UX.
-- **Basic UI components** Powered with CSS framework: TailwindCSS.
+- **Basic UI components** Powered with CSS framework: [TailwindCSS](https://tailwindcss.com/).
 - **Simple navigation**: List page and Edit page.
 - **CRUD operations**: Create, read, update, delete.
 - **API response handling**: Success and error.
