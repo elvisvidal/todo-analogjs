@@ -44,6 +44,7 @@
     "@angular/compiler-cli": "^17.2.0",
     "@nx/vite": "~18.0.0",
     "autoprefixer": "^10.4.14",
+    "cypress": "^13.7.0",
     "jsdom": "^22.1.0",
     "nx": "~18.0.0",
     "postcss": "^8.4.21",
