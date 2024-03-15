@@ -1,4 +1,4 @@
-# TODO NuxtJS
+# TODO AnalogJS (Angular)
 
 With the evolution of internet and it's various tools, very often, I see myself learning much easier with a hands on approach, increasing the difficulty by chunks of functionality and complexity.
 
