@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EditLinkComponent } from '../edit-link/edit-link.component';
-import { DeleteButtonComponent } from '../delete-button/delete-button.component';
+import { EditLinkComponent } from '@components/edit-link/edit-link.component';
+import { DeleteButtonComponent } from '@components/delete-button/delete-button.component';
 import { Todo } from 'src/app/lib/definitions';
-import { ToggleButtonComponent } from '../toggle-button/toggle-button.component';
+import { ToggleButtonComponent } from '@components/toggle-button/toggle-button.component';
 
 @Component({
   selector: 'app-todo-list',

@@ -4,12 +4,17 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": ["jest"]
   },
   "files": ["src/main.ts", "src/main.server.ts"],
   "include": [
     "src/**/*.d.ts",
+    "src/app/**/*.ts",
     "src/app/routes/**/*.ts",
-    "src/app/pages/**/*.page.ts"
-  ]
+    "src/app/pages/**/*.page.ts",
+    "src/app/components/**/*.component.ts",
+    "src/app/services/**/*.service.ts",
+    "src/app/lib/**/*.ts"
+  ],
+  "exclude": ["src/**/*.spec.ts"]
 }

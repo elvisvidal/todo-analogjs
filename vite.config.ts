@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     mainFields: ['module'],
     alias: {
+      '@app': '/src/app',
       '@components': '/src/app/components',
       '@services': '/src/app/services',
     },

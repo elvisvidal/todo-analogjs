@@ -22,10 +22,13 @@ import { TodoService } from '@services/todo.service';
 export default class HomeComponent {
   private subscription: Subscription;
   todos: Todo[] = [];
-  data: Signal<{
-    data: unknown;
-    loaded: boolean;
-  }> = () => ({ loaded: false, data: () => {} });
+  data!: Signal<
+    | {
+        data: unknown;
+        loaded: boolean;
+      }
+    | undefined
+  >;
 
   //
   constructor(
@@ -54,7 +57,8 @@ export default class HomeComponent {
   populateList() {
     try {
       this.data = toSignal(injectLoad<typeof load>(), { requireSync: true });
-      if (!this.data().loaded) {
+      const dataResult = this.data?.() ?? { loaded: false };
+      if (!dataResult.loaded) {
         this.eventBusService.emitEvent({
           alert: {
             visible: true,
@@ -62,7 +66,7 @@ export default class HomeComponent {
               'An error occurred while listing the todos. Please try again.',
           },
         });
-      } else this.todos = <Todo[]>this.data().data;
+      } else this.todos = <Todo[]>dataResult.data;
     } catch (error) {
       this.eventBusService.emitEvent({
         alert: {

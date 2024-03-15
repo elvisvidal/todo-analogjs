@@ -4,9 +4,10 @@ describe('Todo Application', () => {
   });
 
   it('Should add a new todo', () => {
+    // the first interaction seems to need a bigger delay to run perfect
     cy.get('.new-todo-input')
       .clear()
-      .type('Learn Cypress{enter}', { delay: 100 });
+      .type('Learn Cypress{enter}', { delay: 200 });
     cy.get('.todo-list').should('contain', 'Learn Cypress');
   });
 

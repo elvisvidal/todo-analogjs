@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddTodoComponent } from './add-todo.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TodoService } from '../../services/todo.service';
+import { TodoService } from '@services/todo.service';
 import { By } from '@angular/platform-browser';
 
 describe('AddTodoComponent', () => {
