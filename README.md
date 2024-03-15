@@ -36,6 +36,8 @@ Configure your `.env` file according to the provided `.env.example` to set up yo
 
 Execute `npx prisma migrate dev` to apply database migrations.
 
+You can run `npx prisma studio` to watch updates on your database with [Prisma](https://www.prisma.io/).
+
 ## 🚀 Development
 
 Run `npm start` for a dev server. Navigate to `http://localhost:5173/`. The application automatically reloads if you change any of the source files.
@@ -47,5 +49,7 @@ Run `npm run build` to build the client/server project. The client build artifac
 ## 🧪 Test
 
 Run `npm run test` to execute unit tests with [Vitest](https://vitest.dev).
+
+Or you can run `npx cypress open` to execute end to end tests with [Cypress](https://www.cypress.io/).
 
 ---
